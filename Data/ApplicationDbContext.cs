@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ChushkaAssignment.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChushkaAssignment.Data
@@ -8,6 +9,9 @@ namespace ChushkaAssignment.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            this.Database.Migrate();
         }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
