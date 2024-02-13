@@ -121,17 +121,9 @@ namespace ChushkaAssignment.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                user.FullName = Input.FullName;
+                user.FullName = Input.FullName; 
                 var result = await _userManager.CreateAsync(user, Input.Password);
-
-                if (_userManager.Users.Count() == 1)
-                {
-                    await _userManager.AddToRoleAsync(user, "Admin");
-                }
-                else
-                {
                     await _userManager.AddToRoleAsync(user, "User");
-                }
 
                 if (result.Succeeded)
                 {
