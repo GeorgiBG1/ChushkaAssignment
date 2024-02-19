@@ -28,7 +28,7 @@ namespace ChushkaAssignment.Controllers
                 }
                 var productViewModel = new ProductViewModel
                 {
-                    Id = i+1,
+                    Id = products[i].Id,
                     Name = products[i].Name,
                     Price = products[i].Price,
                     Description = products[i].Description,

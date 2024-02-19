@@ -13,13 +13,17 @@
                 @for (int i = 0; i < 5; i++)
                 {
                     <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
-                        <h5 class="text-center mt-3">@Model.ElementAtOrDefault(i)!.Name</h5>
+
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
                         <hr class="hr-1 bg-white" />
                         <p class="text-white text-center">
                             @Model.ElementAtOrDefault(i)!.Description
                         </p>
                         <hr class="hr-1 bg-white" />
                         <h6 class="text-center text-white mb-3">$@Model.ElementAtOrDefault(i)!.Price</h6>
+
                     </div>
                 }
             </div>
@@ -27,7 +31,9 @@
                 @for (int i = 5; i < 10; i++)
                 {
                     <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
-                        <h5 class="text-center mt-3">@Model.ElementAtOrDefault(i)!.Name</h5>
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
                         <hr class="hr-1 bg-white" />
                         <p class="text-white text-center">
                             @Model.ElementAtOrDefault(i)!.Description
@@ -65,7 +71,7 @@ else
     <div class="jumbotron mt-3 chushka-bg-color">
         <h1>Welcome to Chushka Universal Web Shop</h1>
         <hr class="bg-white" />
-        <h3><a class="nav-link-dark" href="/login">Login</a> if you have an account.</h3>
-        <h3><a class="nav-link-dark" href="/register">Register</a> if you don't.</h3>
+        <h3><a asp-area="Identity" asp-page="/Account/Login" class="nav-link-dark">Login</a> if you have an account.</h3>
+        <h3><a asp-area="Identity" asp-page="/Account/Register" class="nav-link-dark">Register</a> if you don't.</h3>
     </div>
 }
