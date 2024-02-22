@@ -1,44 +1,45 @@
-﻿<h1 class="text-center">Create Product</h1>
+﻿@model ProductBindingModel
+<h1 class="text-center">Create Product</h1>
 <hr class="hr-2 bg-dark" />
-<form class="mx-auto half-width" method="post" action="/users/login">
+<form method="post" class="mx-auto half-width" >
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name..." name="name">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Name..." name="name">
     </div>
     <div class="form-group">
-        <label for="price">Price</label>
-        <input type="number" class="form-control" id="price" placeholder="Price..." name="price">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" id="price" placeholder="Price..." name="price">
     </div>
     <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="4" placeholder="Description..." name="description"></textarea>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control" id="description" rows="4" placeholder="Description..." name="description"></textarea>
     </div>
     <h4 class="text-center">Product Type</h4>
     <hr class="hr-2 bg-dark half-width mt-4" />
     <div class="product-type-holder mt-4 d-flex justify-content-around">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Food</label>
+            <label asp-for="Types" class="form-check-label">Food</label>
+            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Food">
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Domestic</label>
+            <label asp-for="Types" class="form-check-label">Domestic</label>
+            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Domestic">
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-            <label class="form-check-label" for="inlineRadio3">Health</label>
+            <label asp-for="Types" class="form-check-label">Health</label>
+            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Health">
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-            <label class="form-check-label" for="inlineRadio4">Cosmetic</label>
+            <label asp-for="Types" class="form-check-label">Cosmetic</label>
+            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="Cosmetic">
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option1" checked>
-            <label class="form-check-label" for="inlineRadio5">Other</label>
+            <label asp-for="Types" class="form-check-label">Other</label>
+            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="Others" checked>
         </div>
     </div>
     <hr class="hr-2 bg-dark half-width mt-4" />
     <div class="button-holder mt-2 d-flex justify-content-center">
-        <button type="submit" class="btn chushka-bg-color">Create</button>
+        <input type="submit" value="Create" class="btn chushka-bg-color" />
     </div>
 </form>

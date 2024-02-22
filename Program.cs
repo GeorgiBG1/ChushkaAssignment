@@ -130,7 +130,7 @@ using (var scope = app.Services.CreateScope())
         }
         name = "Injektoplqktor";
         price = 1.56m;
-        description = "A universal tool for basically everything. It's baNNNN";
+        description = "A universal tool for basically everything. It's banana.";
         type = ProductType.Others;
         for (int i = 0; i < 5; i++)
         {
