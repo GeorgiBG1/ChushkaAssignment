@@ -49,11 +49,30 @@ namespace ChushkaAssignment.Controllers
             db.Products.Add(product);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
-        }        
-        public IActionResult Edit()
+        }
+        public IActionResult Edit(string id)
+        {
+            var product = db.Products.FirstOrDefault(p => p.Id == id);
+            var model = new ProductViewModel
+            {
+                Id = product!.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                Type = product.Type,
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(ProductViewModel productViewModel)
         {
             return View();
-        }        
+        }
+        public IActionResult Delete(string id)
+        {
+            return View();
+        }
+        [HttpPost]
         public IActionResult Delete()
         {
             return View();
