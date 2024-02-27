@@ -1,4 +1,5 @@
 ﻿using ChushkaAssignment.Data;
+using ChushkaAssignment.Data.Enums;
 using ChushkaAssignment.Data.Models;
 using ChushkaAssignment.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +43,7 @@ namespace ChushkaAssignment.Controllers
                 Name = bindingModel.Name,
                 Description = bindingModel.Description,
                 Price = bindingModel.Price,
-                //Type = bindingModel.Types,
+                Type = (ProductType)bindingModel.ProductType,
 
             };
             db.Products.Add(product);

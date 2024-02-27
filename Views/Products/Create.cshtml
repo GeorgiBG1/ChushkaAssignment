@@ -1,7 +1,7 @@
 ﻿@model ProductBindingModel
 <h1 class="text-center">Create Product</h1>
 <hr class="hr-2 bg-dark" />
-<form method="post" class="mx-auto half-width" >
+<form method="post" class="mx-auto half-width">
     <div class="form-group">
         <label asp-for="Name">Name</label>
         <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Name..." name="name">
@@ -17,26 +17,18 @@
     <h4 class="text-center">Product Type</h4>
     <hr class="hr-2 bg-dark half-width mt-4" />
     <div class="product-type-holder mt-4 d-flex justify-content-around">
-        <div class="form-check form-check-inline">
-            <label asp-for="Types" class="form-check-label">Food</label>
-            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Food">
-        </div>
-        <div class="form-check form-check-inline">
-            <label asp-for="Types" class="form-check-label">Domestic</label>
-            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Domestic">
-        </div>
-        <div class="form-check form-check-inline">
-            <label asp-for="Types" class="form-check-label">Health</label>
-            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Health">
-        </div>
-        <div class="form-check form-check-inline">
-            <label asp-for="Types" class="form-check-label">Cosmetic</label>
-            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="Cosmetic">
-        </div>
-        <div class="form-check form-check-inline">
-            <label asp-for="Types" class="form-check-label">Other</label>
-            <input asp-for="Types" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="Others" checked>
-        </div>
+        @{
+
+            string[] str = { "Food", "Domestic", "Health", "Cosmetic", "Other" };
+            @foreach (var type in str)
+            {
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="ProductType" value="@type" />
+                    <input asp-for=ProductType value="1" style="display: none;"/>
+                    <label class="form-check-label" asp-for="@type">@type</label>
+                </div>
+            }
+        }
     </div>
     <hr class="hr-2 bg-dark half-width mt-4" />
     <div class="button-holder mt-2 d-flex justify-content-center">
