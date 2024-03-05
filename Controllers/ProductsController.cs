@@ -23,7 +23,7 @@ namespace ChushkaAssignment.Controllers
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
-                Type = product.Type,
+                ProductType = product.Type,
             };
             return View(model);
         }
@@ -55,15 +55,26 @@ namespace ChushkaAssignment.Controllers
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
-                Type = product.Type,
+                ProductType = product.Type,
             };
+
             return View(model);
         }
         [HttpPost]
         public IActionResult Edit(ProductViewModel productViewModel)
         {
+
+            var product = db.Products.FirstOrDefault(p => p.Id == productViewModel.Id);
+            product.Name = productViewModel.Name;
+            product.Description = productViewModel.Description;
+            product.Price = productViewModel.Price;
+            product.Type = productViewModel.ProductType;
+
+            db.SaveChanges();
             return RedirectToAction("Index", "Home"); ;
         }
+
+
         public IActionResult Delete(string id)
         {
             var product = db.Products.FirstOrDefault(p => p.Id == id);
@@ -73,7 +84,7 @@ namespace ChushkaAssignment.Controllers
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
-                Type = product.Type
+                ProductType = product.Type
             };
             return View(model);
         }

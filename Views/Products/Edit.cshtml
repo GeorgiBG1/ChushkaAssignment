@@ -20,9 +20,9 @@
         @{
 
             string[] str = { "Food", "Domestic", "Health", "Cosmetic", "Other" };
-            @foreach (var type in Model.ProductTypes)
+            @foreach (var type in str)
             {
-                if (Model.Type.ToString() == type)
+                if (Model.ProductType.ToString() == type)
                 {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" asp-for="ProductType" value="@type" checked="checked" />

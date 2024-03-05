@@ -7,8 +7,8 @@ namespace ChushkaAssignment.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
-        public int ProductType { get; set; } = 1;
-        public string[] ProductTypes = new[] { "Food",
-        "Domestic", "Health", "Cosmetic", "Other"};
+        public ProductType ProductType { get; set; }
+        //public string[] ProductTypes = new[] { "Food",
+        //"Domestic", "Health", "Cosmetic", "Other"};
     }
 }
