@@ -18,7 +18,7 @@ namespace ChushkaAssignment.Controllers
 
         public IActionResult Index()
         {
-            var products = db.Products.OrderBy(p => p.Name).ToList();
+            var products = db.Products.OrderByDescending(p => p.Id).ToList();
             var model = new List<ProductViewModel>();
             for (int i = 0; i < products.Count(); i++)
             {

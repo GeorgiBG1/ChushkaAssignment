@@ -34,10 +34,6 @@ namespace ChushkaAssignment.Controllers
         [HttpPost]
         public IActionResult Create(ProductBindingModel bindingModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(bindingModel);
-            }
             var product = new Product
             {
                 Name = bindingModel.Name,
@@ -66,16 +62,31 @@ namespace ChushkaAssignment.Controllers
         [HttpPost]
         public IActionResult Edit(ProductViewModel productViewModel)
         {
-            return View();
+            return RedirectToAction("Index", "Home"); ;
         }
         public IActionResult Delete(string id)
         {
-            return View();
+            var product = db.Products.FirstOrDefault(p => p.Id == id);
+            var model = new ProductViewModel
+            {
+                Id = product!.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Type = product.Type
+            };
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Delete()
+        public IActionResult Delete(ProductViewModel productViewModel)
         {
-            return View();
+            var product = db.Products.FirstOrDefault(p => p.Id == productViewModel.Id);
+            if (product is not null)
+            {
+                db.Products.Remove(product);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home"); ;
         }
     }
 }
