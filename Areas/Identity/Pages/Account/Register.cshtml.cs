@@ -78,10 +78,14 @@ namespace ChushkaAssignment.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
-            public string Email { get; set; } 
+            public string Email { get; set; }
 
             [Required]
-            [Display(Name = "Name")]
+            [Display(Name = "Username")]
+            public string UserName { get; set; }
+
+            [Required]
+            [Display(Name = "Full name")]
             public string FullName { get; set; }
 
             /// <summary>
@@ -121,9 +125,9 @@ namespace ChushkaAssignment.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                user.FullName = Input.FullName; 
+                user.FullName = Input.FullName;
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                    await _userManager.AddToRoleAsync(user, "User");
+                await _userManager.AddToRoleAsync(user, "User");
 
                 if (result.Succeeded)
                 {
