@@ -97,7 +97,7 @@ namespace ChushkaAssignment.Controllers
                 db.Products.Remove(product);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Home"); ;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
