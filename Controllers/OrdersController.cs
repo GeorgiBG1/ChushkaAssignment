@@ -50,7 +50,7 @@ namespace ChushkaAssignment.Controllers
             }).ToList();
             return View(model);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Order(string id)
         {
             var product = db.Products.FirstOrDefault(p => p.Id == id);
