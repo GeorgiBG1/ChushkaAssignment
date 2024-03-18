@@ -2,6 +2,7 @@
 using ChushkaAssignment.Data.Enums;
 using ChushkaAssignment.Data.Models;
 using ChushkaAssignment.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChushkaAssignment.Controllers
@@ -9,10 +10,12 @@ namespace ChushkaAssignment.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext db;
+        private readonly UserManager<AppUser> userManager;
 
-        public ProductsController(ApplicationDbContext db)
+        public ProductsController(ApplicationDbContext db, UserManager <AppUser> userManager)
         {
             this.db = db;
+            this.userManager = userManager;
         }
         public IActionResult Details(string id)
         {
@@ -99,5 +102,6 @@ namespace ChushkaAssignment.Controllers
             }
             return RedirectToAction("Index", "Home"); ;
         }
+        
     }
 }

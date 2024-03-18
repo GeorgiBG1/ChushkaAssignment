@@ -7,6 +7,7 @@ namespace ChushkaAssignment.Data.Models
         public Order()
         {
             Id = Guid.NewGuid().ToString();
+            OrderedOn = DateTime.UtcNow;
         }
         public string Id { get; set; }
         public virtual Product Product { get; set; }
