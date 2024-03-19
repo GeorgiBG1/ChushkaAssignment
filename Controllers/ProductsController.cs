@@ -95,12 +95,17 @@ namespace ChushkaAssignment.Controllers
         public IActionResult Delete(ProductViewModel productViewModel)
         {
             var product = db.Products.FirstOrDefault(p => p.Id == productViewModel.Id);
+            var orders = db.Orders.Where(o => o.Product.Id == productViewModel.Id).ToList();
+            foreach (var order in orders)
+            { 
+               db.Orders.Remove(order);
+            }
             if (product is not null)
             {
                 db.Products.Remove(product);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Home"); ;
+            return RedirectToAction("Index", "Home"); 
         }
 
     }
