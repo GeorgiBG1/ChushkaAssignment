@@ -1,8 +1,142 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model ICollection<ProductViewModel>
+@if (User.Identity!.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <div class="container-fluid text-center">
+            <h2>Greetings, admin!</h2>
+            <h4>Enjoy your work today!</h4>
+        </div>
+        <hr class="hr-2 bg-dark" />
+        <div class="container-fluid product-holder">
+            <div class="row d-flex justify-content-around">
+                @for (int i = 0; i < 5; i++)
+                {
+                    <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
+                        <hr class="hr-1 bg-white" />
+                        <p class="text-white text-center">
+                            @Model.ElementAtOrDefault(i)!.Description
+                        </p>
+                        <hr class="hr-1 bg-white" />
+                        <h6 class="text-center text-white mb-3">$@Model.ElementAtOrDefault(i)!.Price</h6>
+
+                    </div>
+                }
+            </div>
+            <div class="row d-flex justify-content-around mt-4">
+                @for (int i = 5; i < 10; i++)
+                {
+                    <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
+                        <hr class="hr-1 bg-white" />
+                        <p class="text-white text-center">
+                            @Model.ElementAtOrDefault(i)!.Description
+                        </p>
+                        <hr class="hr-1 bg-white" />
+                        <h6 class="text-center text-white mb-3">$@Model.ElementAtOrDefault(i)!.Price</h6>
+                    </div>
+                }
+            </div>
+            <div class="row d-flex justify-content-around mt-4">
+                <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                    <h5 class="text-center mt-3">Something</h5>
+                    <hr class="hr-1 bg-white" />
+                    <p class="text-white text-center">
+                        Something
+                    </p>
+                    <hr class="hr-1 bg-white" />
+                    <h6 class="text-center text-white mb-3">$1000</h6>
+                </div>
+                <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                    <h5 class="text-center mt-3">Something</h5>
+                    <hr class="hr-1 bg-white" />
+                    <p class="text-white text-center">
+                        Something
+                    </p>
+                    <hr class="hr-1 bg-white" />
+                    <h6 class="text-center text-white mb-3">$1000</h6>
+                </div>
+            </div>
+        </div>
+    }
+    if (User.IsInRole("User"))
+    {
+        <div class="container-fluid text-center">
+            <h2>Greetings, admin!</h2>
+            <h4>Enjoy your work today!</h4>
+        </div>
+        <hr class="hr-2 bg-dark" />
+        <div class="container-fluid product-holder">
+            <div class="row d-flex justify-content-around">
+                @for (int i = 0; i < 5; i++)
+                {
+                    <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
+                        <hr class="hr-1 bg-white" />
+                        <p class="text-white text-center">
+                            @Model.ElementAtOrDefault(i)!.Description
+                        </p>
+                        <hr class="hr-1 bg-white" />
+                        <h6 class="text-center text-white mb-3">$@Model.ElementAtOrDefault(i)!.Price</h6>
+
+                    </div>
+                }
+            </div>
+            <div class="row d-flex justify-content-around mt-4">
+                @for (int i = 5; i < 10; i++)
+                {
+                    <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                        <h5 class="text-center mt-3">
+                            <a asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@Model.ElementAtOrDefault(i)!.Id">@Model.ElementAtOrDefault(i)!.Name</a>
+                        </h5>
+                        <hr class="hr-1 bg-white" />
+                        <p class="text-white text-center">
+                            @Model.ElementAtOrDefault(i)!.Description
+                        </p>
+                        <hr class="hr-1 bg-white" />
+                        <h6 class="text-center text-white mb-3">$@Model.ElementAtOrDefault(i)!.Price</h6>
+                    </div>
+                }
+            </div>
+            <div class="row d-flex justify-content-around mt-4">
+                <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                    <h5 class="text-center mt-3">Something</h5>
+                    <hr class="hr-1 bg-white" />
+                    <p class="text-white text-center">
+                        Something
+                    </p>
+                    <hr class="hr-1 bg-white" />
+                    <h6 class="text-center text-white mb-3">$1000</h6>
+                </div>
+                <div class="product col-md-2 chushka-bg-color rounded-top rounded-bottom">
+                    <h5 class="text-center mt-3">Something</h5>
+                    <hr class="hr-1 bg-white" />
+                    <p class="text-white text-center">
+                        Something
+                    </p>
+                    <hr class="hr-1 bg-white" />
+                    <h6 class="text-center text-white mb-3">$1000</h6>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+else
+{
+    <div class="jumbotron mt-3 chushka-bg-color">
+        <h1>Welcome to Chushka Universal Web Shop</h1>
+        <hr class="bg-white" />
+        <h3><a asp-area="Identity" asp-page="/Account/Login" class="nav-link-dark">Login</a> if you have an account.</h3>
+        <h3><a asp-area="Identity" asp-page="/Account/Register" class="nav-link-dark">Register</a> if you don't.</h3>
+    </div>
+}
